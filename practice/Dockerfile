@@ -21,4 +21,5 @@ FROM almalinux:9
 #     TRAINER="SIVA"\
 #     HRS="2HRS" 
     
-ENTRYPOINT ["ping google.com"]
+#ENTRYPOINT ["ping" , "google.com"]
+CMD ["ping","google.com"]
