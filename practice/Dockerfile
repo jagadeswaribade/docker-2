@@ -1,26 +1,35 @@
 FROM almalinux:9
-# RUN dnf install nginx -y
-# RUN rm -rf /usr/share/nginx/html/index.html 
 
-# COPY index.html /usr/share/nginx/html/index.html
+ARG version
 
-# CMD ["nginx" , "-g" , "daemon off;"]
+RUN dnf install nginx -y
+RUN rm -rf /usr/share/nginx/html/index.html 
 
-# #direct url from the internet and copying to location
-# ADD https://chatgpt.com/c/68fc6984-1964-8323-8a49-dfdc5df68507  /usr/share/nginx/html/index.html 
-# #untaring the file and copying to location
-# ADD myfiles.tar.gz /app/ 
+COPY index.html /usr/share/nginx/html/index.html
 
-# LABEL COURSE="devops"\
-#       TRAINER="SIVA"\
-#       HRS="2hrs"
+CMD ["nginx" , "-g" , "daemon off;"]
 
-# EXPOSE 80 
+#direct url from the internet and copying to location
+ADD https://chatgpt.com/c/68fc6984-1964-8323-8a49-dfdc5df68507  /usr/share/nginx/html/index.html 
+#untaring the file and copying to location
+ADD myfiles.tar.gz /app/ 
 
-# ENV COURSE="DEVOPS"\
-#     TRAINER="SIVA"\
-#     HRS="2HRS" 
+LABEL COURSE="devops"\
+      TRAINER="SIVA"\
+      HRS="2hrs"
+
+EXPOSE 80 
+
+ENV COURSE="DEVOPS"\
+    TRAINER="SIVA"\
+    HRS="2HRS" 
     
 
-#CMD ["ping","google.com"]
-ENTRYPOINT ["ping","google.com"]
+CMD ["ping"]
+ENTRYPOINT ["google.com"]
+
+RUN useradd jaggu
+USER jaggu
+
+ARG trainer="jaggu"
+ENV tariner=$trainer
